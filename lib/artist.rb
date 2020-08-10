@@ -11,14 +11,11 @@ class Artist
  include Paramable::InstanceMethods
   
   attr_accessor :name
-  #attr_reader :songs
+
 
   @@all = []
 
-  # def initialize
-  #   @@artists << self
-  #   @songs = []
-  #end
+ 
   def songs 
     Song.all.select {|s| s.artist == self}
   end
@@ -28,7 +25,6 @@ class Artist
   end
 
   def add_song(song)
-    #@songs << song
     song.artist = self
   end
 
@@ -36,7 +32,5 @@ class Artist
     songs.each { |song| add_song(song) }
   end
 
-  # def to_param
-  #   name.downcase.gsub(' ', '-')
-  # end
+ 
 end
