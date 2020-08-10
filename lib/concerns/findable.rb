@@ -6,12 +6,5 @@ module Findable
       end
   end
   
-  # module InstanceMethods
-  # def initialize(name)
-  #   self.class.all << self 
-  #   @name = name
-  # end 
-
-  
   
 end
