@@ -14,21 +14,9 @@ class Song
     @@all << self
   end
 
-  # def find_by_name(name)
-  #   self.all.detect{|a| a.name == name}
-  #end
-
   def self.all
     @@all
   end
-
-  # def self.reset_all
-  #   self.all.clear
-  # end
-
-  # def self.count
-  #   self.all.count
-  # end
 
   def artist=(artist)
     @artist = artist
