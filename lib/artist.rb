@@ -1,26 +1,31 @@
 require 'pry'
 require_relative '../lib/concerns/memorable.rb'
+require_relative '../lib/concerns/findable.rb'
 
 class Artist
- 
+ extend Findable::ClassMethods
  extend Memorable::ClassMethods
-  
+ include Memorable::InstanceMethods 
+ #include Findable::InstanceMethods
   attr_accessor :name
-  attr_reader :songs
+  #attr_reader :songs
 
-  @@artists = []
+  @@all = []
 
-  def initialize
-    @@artists << self
-    @songs = []
+  # def initialize
+  #   @@artists << self
+  #   @songs = []
+  #end
+  def songs 
+    Song.all.select {|s| s.artist == self}
   end
-
-  def self.find_by_name(name)
-    @@artists.detect{|a| a.name == name}
-  end
+  
+  # def self.find_by_name(name)
+  #   @@artists.detect{|a| a.name == name}
+  # end
 
   def self.all
-    @@artists
+    @@all
   end
 
   # def self.reset_all
@@ -32,7 +37,7 @@ class Artist
   # end
 
   def add_song(song)
-    @songs << song
+    #@songs << song
     song.artist = self
   end
 
